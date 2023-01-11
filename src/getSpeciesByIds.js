@@ -1,23 +1,40 @@
+// const data = require("../data/zoo_data");
+
+// const { species } = data;
+
+// const getSpeciesByIds = (...ids) => {
+//   let newIds = [...ids]
+//   const items = newIds.map(id => {
+//     if (newIds = '') return []
+//     const specie = species.find((item) => item.id === id);
+
+//     return specie.name;
+//   });
+//   console.log(items);
+//   return items;
+// };
+
+// const ids = ["0938aa23-f153-4937-9f88-4858b24d6bce", "0938aa23-f153-4937-9f88-4858b24d6bce"]
+
+
+// getSpeciesByIds(ids);
+
 const data = require("../data/zoo_data");
 
-const species = data.species;
+const { species } = data
 
-const getSpeciesByIds = (ids = []) => {
-  const items = ids.map((id) => {
-    const specie = species.find((item) => item.id === id);
-
-    return specie.name;
+const getSpeciesByIds = (...ids) => {
+  const items = ids.map(id => {
+    const specie = species.find(item => item.id === id);
+    return specie;
   });
   console.log(items);
   return items;
 };
 
-const ids = [
-  "0938aa23-f153-4937-9f88-4858b24d6bce",
-  "e8481c1d-42ea-4610-8e11-1752cfc05a46",
-];
 
-getSpeciesByIds(ids);
+getSpeciesByIds("0938aa23-f153-4937-9f88-4858b24d6bce",
+  "e8481c1d-42ea-4610-8e11-1752cfc05a46");
 
 module.exports = getSpeciesByIds;
 

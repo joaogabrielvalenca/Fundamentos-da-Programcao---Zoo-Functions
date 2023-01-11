@@ -3,7 +3,7 @@ const data = require('../data/zoo_data');
 const { species } = data;
 
 const countAnimals = (animal) => {
-  if (!animal.species) {
+  if (!animal) {
     let obj = {};
     species.map((specie) => {
       const { name, residents } = specie;
@@ -27,9 +27,9 @@ const countAnimals = (animal) => {
   return filteredAnimals.length;
 };
 
-const entryData = { species: "penguins", sex: "male" };
+// const entryData = { species: "", sex: "male" };
 
-countAnimals(entryData);
+countAnimals({ species: "bears", sex: "male" });
 
 module.exports = countAnimals;
 
