@@ -1,27 +1,22 @@
 const data = require('../data/zoo_data');
 
-const species = data.species
+const { species } = data;
 
 const getAnimalsOlderThan = (animal, age) => {
-  const item = species.find((specie) => specie.name === animal)
-  console.log(item) 
-  const hasOlder = item.residents.every((element) => element.age >= age)
-  console.log(hasOlder)
+  const item = species.find((specie) => specie.name === animal);
+  console.log(item);
+  const hasOlder = item.residents.every((element) => element.age >= age);
+  console.log(hasOlder);
   return hasOlder;
 };
 
-
-
-getAnimalsOlderThan('lions', 7)
+getAnimalsOlderThan('lions', 7);
 
 module.exports = getAnimalsOlderThan;
 
-//every?
+// every?
 
-
-
-
-// Implemente a função getAnimalsOlderThan que deve receber uma espécie e uma idade como parâmetro, e então retornar se todos os animais dessa espécie possuem 
+// Implemente a função getAnimalsOlderThan que deve receber uma espécie e uma idade como parâmetro, e então retornar se todos os animais dessa espécie possuem
 // essa idade ou são mais velhos.
 
 // Verifique se todos os animais da espécie passada como parâmetro possuem a idade mínima:

@@ -1,33 +1,43 @@
 const data = require('../data/zoo_data');
 
+const { employees, species } = data;
+
+const getSelectedEmployee = (id) => {
+  const selectedEmployees = employees.find((employee) => employee.id === id);
+  return selectedEmployees;
+};
+
+const findSpecie = (employee) => {
+  const specie = species.find(
+    (especie) => especie.id === employee.responsibleFor[0],
+  );
+  return specie;
+};
+
+const findTheOldestFromSpecie = (specie) => {
+  let oldestFromSpecie = specie.residents[0];
+  specie.residents.map((resident) => {
+    if (resident.age >= oldestFromSpecie.age) {
+      oldestFromSpecie = resident;
+    }
+    return oldestFromSpecie;
+  });
+  return oldestFromSpecie;
+};
+
 const getOldestFromFirstSpecies = (id) => {
-  // seu código aqui
+  const selectedEmployee = getSelectedEmployee(id);
+
+  const specie = findSpecie(selectedEmployee);
+  const oldestFromSpecie = findTheOldestFromSpecie(specie);
+  const formatedResult = [];
+  formatedResult.push(
+    oldestFromSpecie.name,
+    oldestFromSpecie.sex,
+    oldestFromSpecie.age,
+  );
+
+  return formatedResult;
 };
 
 module.exports = getOldestFromFirstSpecies;
-
-
-//fazer um filter para achar o funcionário de id do parametro
-//fazer um find para achar o primeiro animal que é cuidado
-//fazer outro find com o id do animal encontrado e achar o mais velho (com reduce?)
-// A função deverá retornar um array com as informações do animal mais velho daquela espécie.
-
-
-
-
-// Implemente a função getOldestFromFirstSpecies que deverá encontrar o animal mais velho da espécie gerenciado por uma pessoa colaboradora.
-
-// A função recebe um parâmetro ID referente à pessoa colaboradora e a partir desse ID:
-
-// A função deverá encontrar a pessoa colaboradora que possui o ID passado por parâmetro;
-
-// A função deverá encontrar a primeira espécie de animal que a pessoa colaboradora é responsável;
-
-// A função deverá encontrar o animal mais velho daquela espécie;
-
-// A função deverá retornar um array com as informações do animal mais velho daquela espécie.
-
-// O que será testado:
-
-// Passado o id de uma pessoa colaboradora, a função getOldestFromFirstSpecies deverá encontrar a primeira espécie de animal gerenciado por essa pessoa, e retornar 
-// um array com nome, sexo e idade do animal mais velho dessa espécie.

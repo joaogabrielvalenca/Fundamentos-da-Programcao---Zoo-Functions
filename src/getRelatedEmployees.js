@@ -1,11 +1,12 @@
-const data = require("../data/zoo_data");
+const data = require('../data/zoo_data');
 
 const { employees } = data;
 
 const isManager = (id) => {
-  lisfOfManagers = [];
+  const lisfOfManagers = [];
   employees.map((employee) => {
     employee.managers.map((manager) => lisfOfManagers.push(manager));
+    return lisfOfManagers;
   });
 
   const checkIsManager = lisfOfManagers.some((manager) => manager === id);
@@ -15,30 +16,26 @@ const isManager = (id) => {
 const getRelatedEmployees = (managerId) => {
   console.log(managerId);
   if (!isManager(managerId)) {
-    throw new Error("O id inserido não é de uma pessoa colaboradora gerente!");
+    throw new Error('O id inserido não é de uma pessoa colaboradora gerente!');
   }
-
   const relatedEmployees = [];
   employees.map((employee) => {
     if (employee.managers.find((manager) => manager === managerId)) {
       relatedEmployees.push(`${employee.firstName} ${employee.lastName}`);
     }
+    return relatedEmployees;
   });
   console.log(relatedEmployees);
   return relatedEmployees;
 };
 
-getRelatedEmployees("9e7d4524-363c-416a-8759-8aa7e50c0992");
+getRelatedEmployees('9e7d4524-363c-416a-8759-8aa7e50c0992');
 
 module.exports = { isManager, getRelatedEmployees };
-
 
 // para o isManager podemos só comparar se o id for diferente de burlId, stephanieId e olaId dizer que é false, else true
 
 // para a segunda função podemos usar o find primeiro. Caso não dê certo usar o filter
-
-
-
 
 // Implemente a função getRelatedEmployees para verificar se uma pessoa colaboradora é gerente e quais pessoas ela lidera.
 

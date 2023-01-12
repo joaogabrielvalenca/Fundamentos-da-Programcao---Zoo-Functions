@@ -16,33 +16,27 @@
 
 // const ids = ["0938aa23-f153-4937-9f88-4858b24d6bce", "0938aa23-f153-4937-9f88-4858b24d6bce"]
 
-
 // getSpeciesByIds(ids);
 
-const data = require("../data/zoo_data");
+const data = require('../data/zoo_data');
 
-const { species } = data
+const { species } = data;
 
 const getSpeciesByIds = (...ids) => {
-  const items = ids.map(id => {
-    const specie = species.find(item => item.id === id);
+  const items = ids.map((id) => {
+    const specie = species.find((item) => item.id === id);
     return specie;
   });
   console.log(items);
   return items;
 };
 
-
-getSpeciesByIds("0938aa23-f153-4937-9f88-4858b24d6bce",
-  "e8481c1d-42ea-4610-8e11-1752cfc05a46");
+getSpeciesByIds('0938aa23-f153-4937-9f88-4858b24d6bce',
+  'e8481c1d-42ea-4610-8e11-1752cfc05a46');
 
 module.exports = getSpeciesByIds;
 
-//fazer rest para os parametros da função. Passar um map para retornar os valores????
-
-
-
-
+// fazer rest para os parametros da função. Passar um map para retornar os valores????
 
 // Implemente a função getSpeciesByIds para buscar as espécies dos animais por meio de um ID e retorne um array contendo todos os animais dessa espécie.
 

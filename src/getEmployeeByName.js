@@ -1,28 +1,24 @@
 const data = require('../data/zoo_data');
 
-const employees = data.employees
+const { employees } = data;
 
 const getEmployeeByName = (employeeName = '') => {
-  const employeeObject = {}
-  if (employeeName === '') return employeeObject
-  const findEmployeeByName = employees.find(employee => employee.firstName === employeeName || employee.lastName === employeeName)
+  const employeeObject = {};
+  if (employeeName === '') return employeeObject;
+  const findEmployeeByName = employees.find((employee) => employee.firstName === employeeName
+    || employee.lastName === employeeName);
   if (!findEmployeeByName) {
-    return 'Esse nome nao está no banco'
+    return 'Esse nome nao está no banco';
   }
-  console.log(findEmployeeByName)
-  return findEmployeeByName
-  
+  console.log(findEmployeeByName);
+  return findEmployeeByName;
 };
 
-getEmployeeByName('Katsu')
+getEmployeeByName('Katsu');
 
 module.exports = getEmployeeByName;
 
-
-
-//usar um find que procure firstName e lastName e retornar o objeto
-
-
+// usar um find que procure firstName e lastName e retornar o objeto
 
 //
 // Implemente a função getEmployeeByName que deve buscar por pessoas colaboradoras através de seu primeiro ou último nome.
