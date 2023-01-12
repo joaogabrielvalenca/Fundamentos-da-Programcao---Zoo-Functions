@@ -2,10 +2,10 @@ const { species } = require('../data/zoo_data');
 
 const getElephants = () =>
   species.find((currentSpecies) => currentSpecies.name === 'elephants');
-
+//função para achar os elefantes e trabalhar com o valor
 const averageAge = ({ residents }) =>
   residents.reduce((sum, elephant) => sum + elephant.age, 0) / residents.length;
-
+//função para calcular a média de idade
 const computeData = (param, elephants) => {
   switch (param) {
   case 'count':
@@ -30,7 +30,10 @@ const handlerElephants = (param) => {
   if (Object.keys(elephants).includes(param)) {
     return elephants[param];
   }
+  console.log(computeData('names', elephants))
   return computeData(param, elephants);
 };
+
+handlerElephants('names')
 
 module.exports = handlerElephants;

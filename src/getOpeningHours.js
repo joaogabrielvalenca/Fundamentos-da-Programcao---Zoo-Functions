@@ -61,7 +61,11 @@ const getOpeningHours = (day, dataHour) => {
   const hour = Number(dataHour.split(':')[0]);
   let message = 'The zoo is ';
   message += openOrClosed(period, hour, open, close) ? 'open' : 'closed';
+  console.log(message)
   return message;
 };
+
+
+getOpeningHours = ('Monday', '08:00:00')
 
 module.exports = getOpeningHours;
