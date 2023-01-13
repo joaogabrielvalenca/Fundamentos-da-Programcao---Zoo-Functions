@@ -1,60 +1,59 @@
-const data = require('../data/zoo_data');
+// const data = require('../data/zoo_data');
 
-const { hours, species } = data;
+// const { hours, species } = data;
 
-const getAvalibleDates = () => {
-  const dates = [];
-  const days = Object.keys(hours);
-  species.map(() => {
-    days.map((date) => {
-      if (!dates.includes(date)) dates.push(date);
-    });
-  });
-  return dates;
-};
+// const getAvalibleDates = () => {
+//   const dates = [];
+//   const days = Object.keys(hours);
+//   species.map(() => {
+//     days.map((date) => {
+//       if (!dates.includes(date)) dates.push(date);
+//       return dates;
+//     });
+//     return dates;
+//   });
+//   return dates;
+// };
 
-const getSchedule = (scheduleTarget = '') => {
-  const dates = getAvalibleDates();
-  const schedule = {};
-  const targetAnimal = species.find((specie) => specie.name === scheduleTarget);
+// const scheduleData = (schedule, dates) => {
+//   dates.map((day) => {
+//     const exhibitions = [];
+//     species.map((specie) => {
+//       if (specie.availability.includes(day)) exhibitions.push(specie.name);
+//     });
+//     Object.entries(hours).map(([key, value]) => {
+//       const officeHour = value.open > 0
+//         ? `Open from ${value.open}am until ${value.close}pm`
+//         : 'CLOSED';
+//       if (key === day) {
+//         schedule[key] = {
+//           officeHour,
+//           exhibition: value.open > 0 ? exhibitions : 'The zoo will be closed!',
+//         };
+//       }
+//     });
+//   });
+//   return schedule;
+// };
 
-  if (targetAnimal) {
-    console.log(targetAnimal.availability);
-    return targetAnimal.availability;
-  }
+// const getSchedule = (scheduleTarget = '') => {
+//   const dates = getAvalibleDates();
+//   let schedule = {};
+//   const targetAnimal = species.find((specie) => specie.name === scheduleTarget);
 
-  dates.map((day) => {
-    const exhibitions = [];
+//   if (targetAnimal) {
+//     return targetAnimal.availability;
+//   }
 
-    species.map((specie) => {
-      if (specie.availability.includes(day)) exhibitions.push(specie.name);
-    });
+//   schedule = scheduleData(schedule, dates);
+//   const daysOfTheWeek = Object.keys(schedule);
+//   const targetDay = daysOfTheWeek.find((day) => day === scheduleTarget);
+//   if (targetDay) {
+//     const result = {};
+//     result[targetDay] = schedule[targetDay];
+//     return result;
+//   }
+//   return schedule;
+// };
 
-    Object.entries(hours).map(([key, value]) => {
-      const officeHour = value.open > 0
-        ? `Open from ${value.open}am until ${value.close}pm`
-        : 'CLOSED';
-      if (key === day) {
-        const result = (schedule[key] = {
-          officeHour,
-          exhibition: value.open > 0 ? exhibitions : 'The zoo will be closed!',
-        });
-        return result;
-      }
-    });
-  });
-  const daysOfTheWeek = Object.keys(schedule);
-  const targetDay = daysOfTheWeek.find((day) => day === scheduleTarget);
-  if (targetDay) {
-    const result = {};
-    result[targetDay] = schedule[targetDay];
-    console.log(result);
-    return result;
-  }
-  console.log(schedule);
-  return schedule;
-};
-
-getSchedule();
-
-module.exports = getSchedule;
+// getSchedule();

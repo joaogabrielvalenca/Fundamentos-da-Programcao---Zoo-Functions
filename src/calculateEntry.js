@@ -2,28 +2,15 @@ const data = require('../data/zoo_data');
 
 const { prices } = data;
 
-const countEntrants = (entrants = []) => {
-  const objEntrants = {};
-  let child = 0;
-  let adult = 0;
-  let senior = 0;
+const countEntrants = (entrants) => {
+  const objEntrants = { child: 0, adult: 0, senior: 0 };
   entrants.map((entrant) => {
-    if (entrant.age < 18) {
-      objEntrants.child = child += 1;
-      objEntrants.adult = adult;
-      objEntrants.senior = senior;
-    }
-    if (entrant.age >= 18 && entrant.age < 50) {
-      objEntrants.child = child;
-      objEntrants.adult = adult += 1;
-      objEntrants.senior = senior;
-    }
-    if (entrant.age >= 50) {
-      objEntrants.child = child;
-      objEntrants.adult = adult;
-      objEntrants.senior = senior += 1;
-    }
+    if (entrant.age < 18) objEntrants.child += 1;
+    if (entrant.age >= 18 && entrant.age < 50) objEntrants.adult += 1;
+    if (entrant.age >= 50) objEntrants.senior += 1;
+    return objEntrants;
   });
+  console.log(objEntrants);
   return objEntrants;
 };
 
